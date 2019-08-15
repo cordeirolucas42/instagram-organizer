@@ -1,34 +1,32 @@
 <% include partials/header %>
 
-<div class="ui raised compact segment">
-	<h2 class="ui header">
-		Add Photo
-	</h2>
-	<form class="ui form" action="/photos" method="POST">
-		<div class="field">
-			<label>Source</label>
-			<input type="text" name="photo[source]">
-		</div>
-		<div class=" two fields">
-			<div class="field">
-				<label>Line</label>
-				<input type="text" name="photo[position][x]">
-			</div>
-			<div class="field">
-				<label>Column</label>
-				<input type="text" name="photo[position][y]">
-			</div>
-		</div>
-
-		<div class="field">
-			<label>Description</label>
-			<textarea name="photo[description]"></textarea>
-		</div>	
-		<button class="ui button">
+<div class="ui text container">
+	<div class="ui raised segment">
+		<h2 class="ui header">
 			Add Photo
-		</button>
-	</form>
+		</h2>
+		<form class="ui form" action="/photos" method="POST">
+			<div class="field">
+				<label>Source</label>
+				<input type="text" name="photo[source]">
+			</div>
+			<div class="field">
+				<label>Description</label>
+				<textarea rows="5" name="photo[description]"></textarea>
+			</div>	
+			<div class="field">
+				<button type="submit" class="ui primary button">
+					Add Photo
+				</button>
+				<a href="/photos" class="ui button">
+					Back
+				</a>
+			</div>	
+		</form>
+	</div>
 </div>
+
+
 
 
 <% include partials/footer %>
