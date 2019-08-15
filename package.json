@@ -1,0 +1,28 @@
+{
+  "name": "instagram-organizer",
+  "version": "1.0.0",
+  "description": "An app for organizing pictures to post in Instagram Feed",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cordeirolucas42/instagram-organizer.git"
+  },
+  "author": "Lucas Cordeiro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cordeirolucas42/instagram-organizer/issues"
+  },
+  "homepage": "https://github.com/cordeirolucas42/instagram-organizer#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.6.9",
+    "nodemon": "^1.19.1",
+    "request": "^2.88.0"
+  }
+}
