@@ -9,7 +9,7 @@ app.use(methodOverride("_method"));
 var bodyParser = require("body-parser"); //import NPM body-parser
 app.use(bodyParser.urlencoded({extended: true})); //setting body-parser
 app.set("view engine", "ejs"); //setting ejs as standard
-//app.use(express.static("public")); //connecting to css and js files
+app.use(express.static("public")); //connecting to css and js files
 
 //DATABASE INITIALIZATION
 //REMEMBER TO START MONGOD IN ANOTHER TERMINAL

@@ -11,8 +11,8 @@
 			</a>
 			<div class="ui three column grid field">
 				<%photos.forEach((photo)=>{%>
-					<div class="column">
-						<a href="/photos/<%=photo._id%>"><img class="ui medium rounded bordered image" src="<%=photo.source%>"></a>
+					<div style="overflow:hidden;" class="column field">
+						<a href="/photos/<%=photo._id%>"><img style="width:100%; margin:-28% 0;" src="<%=photo.source%>"></a>
 					</div>
 				<%})%>
 			</div>	
