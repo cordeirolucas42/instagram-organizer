@@ -12,7 +12,7 @@
 			<div class="ui three column grid field">
 				<%photos.forEach((photo)=>{%>
 					<div class="column">
-						<img class="ui medium rounded bordered image" src="<%=photo.source%>" height="400px">
+						<a href="/photos/<%=photo._id%>"><img class="ui medium rounded bordered image" src="<%=photo.source%>"></a>
 					</div>
 				<%})%>
 			</div>	
