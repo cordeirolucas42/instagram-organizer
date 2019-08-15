@@ -1,2 +1,30 @@
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script>
+	var firstClick = true;
+	var photoHTML;
+	var photoSelector;
+	
+	$("img").click(swap);
+	
+	function swap(){
+		if(firstClick){
+			console.log("photo A: "+ $(this).html());
+			firstClick = !firstClick;
+			photoSelector = $(this);
+			console.log(photoSelector);
+			auxHtml = $(this).parent().html();
+			console.log(auxHtml);
+		} else{
+			console.log("photo B: "+ $(this).html());
+			firstClick = !firstClick;
+			photoSelector.parent().html($(this).parent().html());
+			$(this).parent().html(auxHtml);
+			//$("img").click(swap);
+		}
+	}
+</script>
 </body>
 </html>
