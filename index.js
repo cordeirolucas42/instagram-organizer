@@ -14,6 +14,9 @@ app.use(express.static("public")); //connecting to css and js files
 //DATABASE INITIALIZATION
 //REMEMBER TO START MONGOD IN ANOTHER TERMINAL
 var mongoose = require("mongoose");
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
 mongoose.connect("mongodb://localhost/Insta",{ useNewUrlParser: true });
 var photoSchema = new mongoose.Schema({ //creating Schema
    source: String,
