@@ -24,7 +24,7 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 //mongoose.connect("mongodb://localhost/Insta",{ useNewUrlParser: true });
-mongoose.connect("mongodb://localhost/Insta?authSource=admin", (err,res)=>{
+mongoose.connect("mongodb://127.0.0.1/Insta?authSource=admin", (err,res)=>{
 	if(err){
 		console.log("ERROR connecting to: " + uristring + ". " + err);
 	} else {
