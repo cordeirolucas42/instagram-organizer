@@ -18,13 +18,13 @@ var mongoose = require("mongoose");
 var uristring = 
 process.env.MONGOLAB_URI||
 process.env.MONGOHQ_URL ||
-"mongodb://localhost/Insta";
+"mongodb://localhost/Insta?authSource=admin";
 
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 //mongoose.connect("mongodb://localhost/Insta",{ useNewUrlParser: true });
-mongoose.connect(uristring, (err,res)=>{
+mongoose.connect("mongodb://localhost/Insta?authSource=admin", (err,res)=>{
 	if(err){
 		console.log("ERROR connecting to: " + uristring + ". " + err);
 	} else {
