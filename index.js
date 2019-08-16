@@ -10,14 +10,27 @@ var bodyParser = require("body-parser"); //import NPM body-parser
 app.use(bodyParser.urlencoded({extended: true})); //setting body-parser
 app.set("view engine", "ejs"); //setting ejs as standard
 app.use(express.static("public")); //connecting to css and js files
+var theport = process.env.PORT || 5000;
 
 //DATABASE INITIALIZATION
 //REMEMBER TO START MONGOD IN ANOTHER TERMINAL
 var mongoose = require("mongoose");
+var uristring = 
+process.env.MONGOLAB_URI||
+process.env.MONGOHQ_URL ||
+"mongodb://localhost/Insta";
+
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.connect("mongodb://localhost/Insta",{ useNewUrlParser: true });
+mongoose.connect(uristring, (err,res)=>{
+	if(err){
+		console.log("ERROR connecting to: " + uristring + ". " + err);
+	} else {
+		console.log("Succeed connected to: " + uristring);
+	}
+});
 var photoSchema = new mongoose.Schema({ //creating Schema
    source: String,
    position: {x: Number, y: Number},
