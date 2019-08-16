@@ -23,7 +23,7 @@ process.env.MONGOHQ_URL ||
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
-mongoose.connect("mongodb://localhost/Insta",{ useNewUrlParser: true });
+//mongoose.connect("mongodb://localhost/Insta",{ useNewUrlParser: true });
 mongoose.connect(uristring, (err,res)=>{
 	if(err){
 		console.log("ERROR connecting to: " + uristring + ". " + err);
@@ -119,19 +119,8 @@ app.delete("/photos/:id",(req,res)=>{
 
 
 // START SERVER====================================================
-app.listen(3000, (err)=>{
+app.listen(theport, (err)=>{
 	if(!err){
-		console.log("Server started")
+		console.log("Listening on port " + theport)
 	}
 });
-
-
-
-
-
-
-
-
-
-
-
