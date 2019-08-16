@@ -15,22 +15,33 @@ var theport = process.env.PORT || 5000;
 //DATABASE INITIALIZATION
 //REMEMBER TO START MONGOD IN ANOTHER TERMINAL
 var mongoose = require("mongoose");
-var uristring = 
-process.env.MONGOLAB_URI||
-process.env.MONGOHQ_URL ||
-"mongodb://localhost/Insta?authSource=admin";
+// var uristring = 
+// process.env.MONGOLAB_URI||
+// process.env.MONGOHQ_URL ||
+// "mongodb://localhost/Insta?authSource=admin";
 
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 //mongoose.connect("mongodb://localhost/Insta",{ useNewUrlParser: true });
-mongoose.connect("mongodb://127.0.0.1/Insta?authSource=admin", (err,res)=>{
-	if(err){
-		console.log("ERROR connecting to: " + uristring + ". " + err);
-	} else {
-		console.log("Succeed connected to: " + uristring);
-	}
-});
+var uri = 'mongodb://heroku_8wf9mxrp:c1on8vkqmds2tig1tli27iu8no@ds259586.mlab.com:59586/heroku_8wf9mxrp';
+
+var options = {
+  "server" : {
+    "socketOptions" : {
+      "keepAlive" : 300000,
+      "connectTimeoutMS" : 30000
+    }
+  },
+  "replset" : {
+    "socketOptions" : {
+      "keepAlive" : 300000,
+      "connectTimeoutMS" : 30000
+    }
+  }
+}
+
+mongoose.connect(uri, options);
 var photoSchema = new mongoose.Schema({ //creating Schema
    source: String,
    position: {x: Number, y: Number},
