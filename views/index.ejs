@@ -12,8 +12,9 @@
 			<div class="ui three column grid field">
 				<%photos.forEach((photo)=>{%>
 					<div style="overflow:hidden;" class="column field">
-						<!-- <img style="width:100%; margin:-28% 0;" src="<%=photo.source%>" alt="<%=photo.description%>"> -->
-						<a href="/photos/<%=photo._id%>"><img style="width:100%; margin:-28% 0;" src="<%=photo.source%>" alt="<%=photo.description%>"></a>
+						<img style="width:100%; margin:-28% 0;" src="<%=photo.source%>" alt="<%=photo.description%>">
+						<a href="/photos/<%=photo._id%>"><button class="ui small button">More</button></a>
+						<!-- <a href="/photos/<%=photo._id%>"><img style="width:100%; margin:-28% 0;" src="<%=photo.source%>" alt="<%=photo.description%>"></a> -->
 					</div>
 				<%})%>
 			</div>	
