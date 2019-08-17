@@ -22,9 +22,8 @@
 			$(this).addClass("swapped");
 			photoSelector.parent().html($(this).parent().html());
 			$(this).parent().html(auxHtml);
-			$("img.swapped").click(swap);
-			$(this).removeClass("swapped");
-			photoSelector.removeClass("swapped");
+			$(".swapped").click(swap);
+			$(".swapped").removeClass("swapped");
 		}
 	}
 </script>
