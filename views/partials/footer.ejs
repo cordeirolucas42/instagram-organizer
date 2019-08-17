@@ -13,6 +13,7 @@
 		if(firstClick){
 			console.log("photo A: "+ $(this).html());
 			firstClick = !firstClick;
+			$(this).addClass("swapped");
 			photoSelector = $(this);
 			console.log(photoSelector);
 			auxHtml = $(this).parent().html();
@@ -20,9 +21,10 @@
 		} else{
 			console.log("photo B: "+ $(this).html());
 			firstClick = !firstClick;
+			$(this).addClass("swapped");
 			photoSelector.parent().html($(this).parent().html());
 			$(this).parent().html(auxHtml);
-			//$("img").click(swap);
+			$("img.swapped").click(swap);
 		}
 	}
 </script>
