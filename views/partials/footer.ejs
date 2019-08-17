@@ -11,20 +11,20 @@
 	
 	function swap(){
 		if(firstClick){
-			console.log("photo A: "+ $(this).html());
+			console.log("photo A: "+ $(this).attr("alt"));
 			firstClick = !firstClick;
 			$(this).addClass("swapped");
 			photoSelector = $(this);
-			console.log(photoSelector);
 			auxHtml = $(this).parent().html();
-			console.log(auxHtml);
 		} else{
-			console.log("photo B: "+ $(this).html());
+			console.log("photo B: "+ $(this).attr("alt"));
 			firstClick = !firstClick;
 			$(this).addClass("swapped");
 			photoSelector.parent().html($(this).parent().html());
 			$(this).parent().html(auxHtml);
 			$("img.swapped").click(swap);
+			$(this).removeClass("swapped");
+			photoSelector.removeClass("swapped");
 		}
 	}
 </script>
