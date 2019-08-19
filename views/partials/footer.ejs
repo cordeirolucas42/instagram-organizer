@@ -12,26 +12,33 @@
 	
 	function swap(){
 		if(firstClick){
-			console.log("##################################");
-			console.log("photo A: "+ $(this).attr("alt"));
+			// console.log("##################################");
+			// console.log("photo A: "+ $(this).attr("alt"));
 			firstClick = !firstClick;
+			console.log($(this).attr("id"));
 			$(this).addClass("swapped");
-			console.log($(this).attr("class"));
 			photoSelector = $(this);
 			photoHTML = $(this).parent().html();
 		} else{
-			console.log("photo B: "+ $(this).attr("alt"));
+			// console.log("photo B: "+ $(this).attr("alt"));
 			firstClick = !firstClick;
+			console.log($(this).attr("id"));
 			$(this).addClass("swapped");
-			console.log($(this).attr("class"));
 			photoSelector.parent().html($(this).parent().html());
 			$(this).parent().html(photoHTML);
-			console.log($(".swapped"));
 			$(".swapped").click(swap);
 			$(".swapped").removeClass("swapped");
-			console.log($(".swapped"));
 		}
 	}
+
+	$("#save").click(function(){
+		var seq = [];
+		$("img").each(function(index){
+			seq.push($(this).attr("id"));
+		});
+		$.post("/photos/modify",{seq:seq}); //data to be sent
+	});	
+
 	$(window).resize(function(){
 		$("img.square-crop").parent().height($("img.square-crop").width());
 	});
