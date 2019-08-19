@@ -87,6 +87,7 @@ app.post("/photos/modify", async function (req, res) {
 	for (i = 0; i < seq.length; i++) {
 		console.log(i + " element of db has position of: " + photos[i].position);
 	}
+	//redirect
 	res.redirect("/photos");
 });
 
