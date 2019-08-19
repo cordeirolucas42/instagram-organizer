@@ -7,7 +7,20 @@
 	var photoHTML;
 	var photoSelector;
 	
-	$("img.square-crop").parent().height($("img.square-crop").width());
+	var squareCrop = $("img.square-crop");
+	var columnWidth = squareCrop.parent().width();
+	squareCrop.each(function(){
+		if(this.naturalWidth>this.naturalHeight){
+			// $(this).parent().height(columnWidth);
+			$(this).height(columnWidth);
+			$(this).css("width","auto");
+		} else {
+			$(this).css("width","100%");
+			$(this).css("height","auto");
+			$(this).parent().height(columnWidth);
+		}
+	});
+		
 	$("img").click(swap);
 	
 	function swap(){
@@ -17,6 +30,7 @@
 			firstClick = !firstClick;
 			console.log($(this).attr("id"));
 			$(this).addClass("swapped");
+			$(this).parent().addClass("swapped");
 			photoSelector = $(this);
 			photoHTML = $(this).parent().html();
 		} else{
@@ -24,9 +38,10 @@
 			firstClick = !firstClick;
 			console.log($(this).attr("id"));
 			$(this).addClass("swapped");
+			$(this).parent().addClass("swapped");
 			photoSelector.parent().html($(this).parent().html());
 			$(this).parent().html(photoHTML);
-			$(".swapped").click(swap);
+			$("img.swapped").click(swap);
 			$(".swapped").removeClass("swapped");
 		}
 	}
@@ -40,7 +55,19 @@
 	});	
 
 	$(window).resize(function(){
-		$("img.square-crop").parent().height($("img.square-crop").width());
+		squareCrop = $("img.square-crop");
+		columnWidth = squareCrop.parent().width();
+		squareCrop.each(function(){
+			if(this.naturalWidth>this.naturalHeight){
+				// $(this).parent().height(columnWidth);
+				$(this).height(columnWidth);
+				$(this).css("width","auto");
+			} else {
+				$(this).css("width","100%");
+				$(this).css("height","auto");
+				$(this).parent().height(columnWidth);
+			}
+		});
 	});
 </script>
 </body>
