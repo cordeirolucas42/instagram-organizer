@@ -9,9 +9,19 @@
 			.ui.container{
 				margin-top:40px;
 			}
-			div.swapped{
-				border: 2px solid navy;
+			i {
+				color:rgba(255,255,255,0.7);
 			}
+			i.swapped{
+				color:rgba(0,255,0,1);
+			}
+			i:hover {
+				color:rgb(116, 255, 116);
+			}
+			i.checked:not(.swapped){
+				color:rgba(51, 255, 248,1);
+			}		
+
 			.ui.grid>.column:not(.row){
 				padding: 5px 0 0 5px;
 			}
