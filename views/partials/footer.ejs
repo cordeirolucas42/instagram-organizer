@@ -8,31 +8,37 @@
 	var photoSelector;
 	
 	var squareCrop = $("img.square-crop");
-	if(squareCrop.width()>squareCrop.height()){
-		squareCrop.height(squareCrop.parent().width())
-		squareCrop.css("width","auto");
-	} else {
-		squareCrop.parent().height(squareCrop.width());
-	}	
-	$("img").click(swap);
+	var columnWidth = squareCrop.parent().width();
+	squareCrop.each(function(){
+		if(this.naturalWidth>this.naturalHeight){
+			// $(this).parent().height(columnWidth);
+			$(this).height(columnWidth);
+			$(this).css("width","auto");
+		} else {
+			$(this).css("width","100%");
+			$(this).css("height","auto");
+			$(this).parent().height(columnWidth);
+		}
+	});
+		
+	$("i").click(swap);
 	
 	function swap(){
 		if(firstClick){
-			// console.log("##################################");
-			// console.log("photo A: "+ $(this).attr("alt"));
+			console.log("##################################");
+			console.log("photo A: "+ $(this).attr("id"));
 			firstClick = !firstClick;
-			console.log($(this).attr("id"));
 			$(this).addClass("swapped");
 			photoSelector = $(this);
 			photoHTML = $(this).parent().html();
 		} else{
-			// console.log("photo B: "+ $(this).attr("alt"));
+			console.log("photo B: "+ $(this).attr("id"));
 			firstClick = !firstClick;
-			console.log($(this).attr("id"));
 			$(this).addClass("swapped");
 			photoSelector.parent().html($(this).parent().html());
 			$(this).parent().html(photoHTML);
 			$(".swapped").click(swap);
+			$(".swapped").addClass("checked");
 			$(".swapped").removeClass("swapped");
 		}
 	}
@@ -45,14 +51,22 @@
 		$.post("/photos/modify",{seq:seq}); //data to be sent
 	});	
 
-	$(window).resize(function(){
-		var squareCrop = $("img.square-crop");
-		if(squareCrop.width()>squareCrop.height()){
-			squareCrop.height(squareCrop.parent().width())
-			squareCrop.css("width","auto");
-		} else {
-			squareCrop.parent().height(squareCrop.width());
-		}
+	var resizeTimer;
+	$(window).on('resize', function(e) {
+		clearTimeout(resizeTimer);
+		resizeTimer = setTimeout(function() {
+			squareCrop.each(function(){
+				if(this.naturalWidth>this.naturalHeight){
+					// $(this).parent().height(columnWidth);
+					$(this).height(columnWidth);
+					$(this).css("width","auto");
+				} else {
+					$(this).css("width","100%");
+					$(this).css("height","auto");
+					$(this).parent().height(columnWidth);
+				}
+			});					
+		}, 250);
 	});
 </script>
 </body>
