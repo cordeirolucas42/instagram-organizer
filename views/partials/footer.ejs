@@ -7,7 +7,13 @@
 	var photoHTML;
 	var photoSelector;
 	
-	$("img.square-crop").parent().height($("img.square-crop").width());
+	var squareCrop = $("img.square-crop");
+	if(squareCrop.width()>squareCrop.height()){
+		squareCrop.height(squareCrop.parent().width())
+		squareCrop.css("width","auto");
+	} else {
+		squareCrop.parent().height(squareCrop.width());
+	}	
 	$("img").click(swap);
 	
 	function swap(){
@@ -40,7 +46,13 @@
 	});	
 
 	$(window).resize(function(){
-		$("img.square-crop").parent().height($("img.square-crop").width());
+		var squareCrop = $("img.square-crop");
+		if(squareCrop.width()>squareCrop.height()){
+			squareCrop.height(squareCrop.parent().width())
+			squareCrop.css("width","auto");
+		} else {
+			squareCrop.parent().height(squareCrop.width());
+		}
 	});
 </script>
 </body>

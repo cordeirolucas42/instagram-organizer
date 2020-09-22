@@ -44,7 +44,7 @@ var Photo = mongoose.model("Photo", photoSchema); //creating model and collectio
 
 //ROUTES=================================================================
 
-// Photo.remove({},function(){});
+//Photo.remove({},function(){});
 
 //INDEX
 app.get("/", (req, res) => {
