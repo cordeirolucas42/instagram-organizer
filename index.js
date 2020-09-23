@@ -19,7 +19,7 @@ var mongoose = require("mongoose");
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
-var uri = 'mongodb://heroku_8wf9mxrp:c1on8vkqmds2tig1tli27iu8no@ds259586.mlab.com:59586/heroku_8wf9mxrp';
+var uri = process.env.DB_URI;
 var options = {
 	"server": {
 		"socketOptions": {
